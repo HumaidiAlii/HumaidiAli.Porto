@@ -3,7 +3,7 @@
 \*-----------------------------------*/
 
 /**
- * copyright 2022 @codewithsadee
+ * copyright 2025 @Humaidiali
  */
 
 /*-----------------------------------*\
@@ -329,10 +329,6 @@ main {
   #DOWNLOAD CV BUTTON
 \*-----------------------------------*/
 
-
-
-
-
 /*-----------------------------------*\
   #SIDEBAR
 \*-----------------------------------*/
@@ -360,7 +356,6 @@ main {
   text-align: left; /* Pastikan parent element juga rata kiri */
 }
 
-
 .title {
   color: var(--white-1);
   text-align: left; /* Rata kiri */
@@ -373,7 +368,6 @@ main {
   margin-top: 0; /* Menghilangkan jarak atas */
   margin-bottom: 0; /* Opsional untuk jarak lebih rapat */
 }
-
 
 .avatar-box {
   background: var(--bg-gradient-onyx);
@@ -574,10 +568,15 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
+  text-align: justify;
 }
 
 .about-text p {
   margin-bottom: 15px;
+  text-align: justify; /* Rata kanan-kiri */
+  text-justify: inter-word; /* Mengatur distribusi spasi antar kata */
+  word-spacing: 1px; /* Menyesuaikan jarak antar kata */
+  line-height: 1.8; /* Meningkatkan keterbacaan */
 }
 
 /**
@@ -840,34 +839,40 @@ main {
  * #clients 
  */
 
+/**
+ * #clients 
+ */
+
 .clients {
   margin-bottom: 15px;
 }
 
 .clients-list {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 15px;
-  margin: 0 -15px;
-  padding: 25px;
-  padding-bottom: 25px;
+  justify-content: flex-start; /* Bisa diganti ke center jika perlu */
+  align-items: center;
+  gap: 5px; /* Jarak antar ikon */
+  margin: 0 -10px;
+  padding: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
-  scroll-padding-inline: 25px;
+  scroll-padding-inline: 20px;
 }
 
 .clients-item {
-  min-width: 50%;
+  flex: 0 0 auto;
   scroll-snap-align: start;
 }
 
+/* Ukuran gambar SVG seragam */
 .clients-item img {
-  width: 100%;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   filter: grayscale(1);
-  transition: var(--transition-1);
+  transition: filter 0.3s ease;
 }
 
 .clients-item img:hover {
@@ -1026,27 +1031,27 @@ main {
   cursor: pointer;
 }
 
-
 .project-item-icon-box {
   display: flex;
   gap: 10px;
 }
 
-.view-icon, .code-icon {
+.view-icon,
+.code-icon {
   font-size: 24px;
   color: white;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
-.view-icon:hover, .code-icon:hover {
+.view-icon:hover,
+.code-icon:hover {
   transform: scale(1.2);
 }
 
 .code-icon {
-  color: #4CAF50; /* Warna hijau untuk icon kode */
+  color: #4caf50; /* Warna hijau untuk icon kode */
 }
-
 
 .filter-list {
   display: none;
@@ -1247,41 +1252,51 @@ main {
   cursor: pointer;
 }
 
-/* view site */
-.view-site-btn {
+/* view site  */
+/* Container tombol agar sejajar */
+.view-buttons {
+  display: flex;
+  gap: 15px; /* Jarak antara tombol */
+  margin-top: 5px;
+}
+
+/* Style umum untuk kedua tombol */
+.view-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: linear-gradient(135deg, #1e90ff, #00bfff);
+  background: linear-gradient(135deg, #333, #555);
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
-  padding: 6px 12px;
+  padding: 5px 7px;
   border-radius: 20px;
   transition: all 0.3s ease-in-out;
   text-decoration: none;
-  box-shadow: 0 2px 6px rgba(0, 191, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
-.view-site-btn ion-icon {
-  font-size: 11px;
+/* Ikon pada tombol */
+.view-btn ion-icon {
+  font-size: 12px;
   transition: transform 0.3s ease-in-out;
 }
 
-.view-site-btn:hover {
-  background: linear-gradient(135deg, #00bfff, #1e90ff);
-  box-shadow: 0 4px 10px rgba(0, 191, 255, 0.5);
+/* Hover effect */
+.view-btn:hover {
+  background: linear-gradient(135deg, #555, #333);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.view-site-btn:hover ion-icon {
+.view-btn:hover ion-icon {
   transform: rotate(360deg);
 }
 
-.view-site-btn:active {
+/* Efek klik */
+.view-btn:active {
   transform: scale(0.96);
 }
-
 
 /*-----------------------------------*\
   #BLOG
@@ -1299,38 +1314,42 @@ main {
 
 .blog-post-item > a {
   position: relative;
-  background: var(--border-gradient-onyx);
+  background: linear-gradient(145deg, #1e1e1e, #292929);
   height: 100%;
-  box-shadow: var(--shadow-4);
-  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 18px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 }
 
-.blog-post-item > a::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  background: var(--eerie-black-1);
-  z-index: -1;
+.blog-post-item > a:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(145deg, #292929, #353535);
 }
 
+/* Gambar responsif */
 .blog-banner-box {
   width: 100%;
-  height: 200px;
-  border-radius: 12px;
+  height: 280px !important; /* Paksa ukuran */
+  max-height: 280px !important; /* Pastikan batas maksimal */
+  border-radius: 14px;
   overflow: hidden;
+  position: relative;
 }
 
 .blog-banner-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition-1);
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
 }
 
 .blog-post-item > a:hover .blog-banner-box img {
-  transform: scale(1.1);
+  transform: scale(1.12);
+  filter: brightness(1.2);
 }
 
 .blog-content {
@@ -1375,16 +1394,226 @@ main {
   line-height: 1.6;
 }
 
-@media (max-width: 600px) {
-  .project-list {
+/* Responsif untuk perangkat kecil */
+@media (max-width: 768px) {
+  .blog-banner-box {
+    aspect-ratio: 16 / 10; /* Sedikit lebih tinggi untuk layar kecil */
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-banner-box {
+    aspect-ratio: 4 / 3;
+    max-height: 180px;
+  }
+}
+
+/*-----------------------------------*\
+  #ACTIVITIES - Modern & Elegant with Animation
+\*-----------------------------------*/
+
+.activity-posts {
+  margin-bottom: 20px;
+}
+
+.activity-posts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.activity-post-item > a {
+  position: relative;
+  background: linear-gradient(145deg, #1e1e1e, #292929);
+  height: 100%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 18px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.activity-post-item > a:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(145deg, #292929, #353535);
+}
+
+.activity-text {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.6; /* Menambah jarak antar baris agar lebih nyaman dibaca */
+  word-spacing: 1px; /* Memberikan sedikit ruang antar kata */
+  margin-bottom: 10px; /* Memberikan jarak antar elemen jika diperlukan */
+}
+
+.activity-banner-box {
+  width: 100%;
+  height: 280px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.activity-banner-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.activity-post-item > a:hover .activity-banner-box img {
+  transform: scale(1.12);
+  filter: brightness(1.2);
+}
+
+/*-----------------------------------*
+  #ACTIVITY CONTENT STYLING
+/*-----------------------------------*/
+
+.activity-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-content:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.activity-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.activity-category {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffbb33;
+  text-transform: uppercase;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #ffbb33;
+  border-radius: 50%;
+}
+
+.activity-meta time {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.activity-item-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+  transition: color 0.3s ease-in-out;
+}
+
+.activity-content:hover .activity-item-title {
+  color: #ffbb33;
+}
+
+.activity-text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease-in-out;
+}
+
+.activity-content:hover .activity-text {
+  color: white;
+}
+
+/* SLIDER */
+.activity-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+}
+
+.activity-slider-container {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.activity-slider img {
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 12px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Navigasi slider */
+.activity-slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 22px;
+  border-radius: 50%;
+  display: flex !important; /* Paksa tombol tetap muncul */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.activity-slider-prev {
+  left: 10px;
+}
+
+.activity-slider-next {
+  right: 10px;
+}
+
+.activity-slider-btn:hover {
+  background: rgba(255, 187, 51, 0.9);
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .activity-posts-list {
     grid-template-columns: 1fr;
   }
-  .project-item {
-    width: 90%;
-    margin: auto;
-  }
-  .project-img {
-    max-width: 100%;
+
+  .activity-slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
   }
 }
 
@@ -1566,7 +1795,6 @@ textarea.form-input::-webkit-resizer {
   color: white;
   cursor: pointer;
 }
-
 
 /*-----------------------------------*\
   #RESPONSIVE
@@ -1971,128 +2199,128 @@ textarea.form-input::-webkit-resizer {
   }
 
   /* PORTFOLIO */
-.article-title {
-  padding-bottom: 20px;
-}
-
-.filter-select-box {
-  display: none;
-}
-
-.filter-list {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 25px;
-  padding-left: 5px;
-  margin-bottom: 30px;
-}
-
-.filter-item button {
-  color: var(--light-gray);
-  font-size: var(--fs-5);
-  transition: var(--transition-1);
-}
-
-.filter-item button:hover {
-  color: var(--light-gray-70);
-}
-
-.filter-item button.active {
-  color: var(--orange-yellow-crayola);
-}
-
-/* Portfolio and blog grid */
-.project-list,
-.blog-posts-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-/* Responsive modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-
-.modal-content {
-  max-width: 90%;
-  max-height: 90%;
-  display: block;
-  margin: auto;
-  border-radius: 10px;
-}
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  color: white;
-  font-size: 30px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Responsive project items */
-.project-item {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 14px;
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease-in-out;
-  position: relative;
-}
-
-.project-img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.project-title {
-  font-size: 18px;
-}
-
-.project-category {
-  font-size: 14px;
-}
-
-/* Responsive buttons */
-.view-site-btn {
-  font-size: 14px;
-  padding: 6px 12px;
-  border-radius: 20px;
-}
-
-/* Media queries */
-@media (max-width: 768px) {
-  .filter-list {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+  .article-title {
+    padding-bottom: 20px;
   }
 
-  .project-list {
-    grid-template-columns: 1fr;
+  .filter-select-box {
+    display: none;
+  }
+
+  .filter-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    padding-left: 5px;
+    margin-bottom: 30px;
+  }
+
+  .filter-item button {
+    color: var(--light-gray);
+    font-size: var(--fs-5);
+    transition: var(--transition-1);
+  }
+
+  .filter-item button:hover {
+    color: var(--light-gray-70);
+  }
+
+  .filter-item button.active {
+    color: var(--orange-yellow-crayola);
+  }
+
+  /* Portfolio and blog grid */
+  .project-list,
+  .blog-posts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  /* Responsive modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
   }
 
   .modal-content {
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
   }
-}
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* Responsive project items */
+  .project-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 14px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+  }
+
+  .project-img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+
+  .project-title {
+    font-size: 18px;
+  }
+
+  .project-category {
+    font-size: 14px;
+  }
+
+  /* Responsive buttons */
+  .view-site-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  /* Media queries */
+  @media (max-width: 768px) {
+    .filter-list {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .project-list {
+      grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+      max-width: 95%;
+      max-height: 95%;
+    }
+  }
   /**
    * CONTACT
    */
