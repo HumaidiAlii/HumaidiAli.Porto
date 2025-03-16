@@ -173,3 +173,47 @@ function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
 
+// swapp gambar
+
+document.addEventListener("DOMContentLoaded", function () {
+  const sliders = document.querySelectorAll(".activity-slider");
+
+  sliders.forEach(slider => {
+    const container = slider.querySelector(".activity-slider-container");
+    const images = container.querySelectorAll("img");
+    const prevBtn = slider.querySelector(".activity-slider-prev");
+    const nextBtn = slider.querySelector(".activity-slider-next");
+
+    let index = 0;
+    const totalImages = images.length;
+
+    function updateSlider() {
+      const imageWidth = images[0].clientWidth;
+      container.style.transform = `translateX(${-index * imageWidth}px)`;
+
+      // **Pastikan tombol prev dan next selalu terlihat**
+      prevBtn.style.display = "flex";
+      nextBtn.style.display = "flex";
+      prevBtn.style.opacity = "1";
+      nextBtn.style.opacity = "1";
+      prevBtn.style.visibility = "visible";
+      nextBtn.style.visibility = "visible";
+    }
+
+    nextBtn.addEventListener("click", function () {
+      index = (index + 1) % totalImages; // Pindah ke gambar berikutnya (loop)
+      updateSlider();
+    });
+
+    prevBtn.addEventListener("click", function () {
+      index = (index - 1 + totalImages) % totalImages; // Pindah ke gambar sebelumnya (loop)
+      updateSlider();
+    });
+
+    // **Pastikan tombol tetap muncul saat pertama kali di-load**
+    updateSlider();
+
+    // **Pastikan tombol tetap muncul jika terjadi resize**
+    window.addEventListener("resize", updateSlider);
+  });
+});
